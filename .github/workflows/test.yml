@@ -1,0 +1,19 @@
+name: Test k8s actions
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+jobs:
+  test-microk8s:
+    runs-on: ubuntu-latest
+    name: Test MicroK8s
+    steps:
+    - uses: balchua/microk8s-actions@v0.2.2
+      with:
+        channel: 'latest/stable'
+    - name: Test MicroK8s
+      id: myactions
+      run: |
+        set -ex
+        kubectl get no
