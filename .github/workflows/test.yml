@@ -12,8 +12,20 @@ jobs:
     - uses: balchua/microk8s-actions@v0.2.2
       with:
         channel: 'latest/stable'
-    - name: Test MicroK8s
-      id: myactions
+    - name: Test
+      run: |
+        set -ex
+        kubectl get no
+  test-k3d:
+    runs-on: ubuntu-latest
+    name: Test k3d 
+    steps:
+    - uses: AbsaOSS/k3d-action@v2
+      name: "Create Single Cluster"
+      with:
+        cluster-name: "test-cluster-1"
+        args: --agents 1
+    - name: Test
       run: |
         set -ex
         kubectl get no
