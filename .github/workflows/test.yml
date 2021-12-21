@@ -29,3 +29,15 @@ jobs:
       run: |
         set -ex
         kubectl get no
+  test-k3s:
+    runs-on: ubuntu-latest
+    name: Test k3s 
+    steps:
+    - uses: debianmaster/actions-k3s@master
+      id: k3s
+      with:
+        version: 'v1.21.2-k3s1'
+    - name: Test
+      run: |
+        set -ex
+        kubectl get no
