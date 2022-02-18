@@ -21,10 +21,12 @@ jobs:
     name: Test k3d 
     steps:
     - uses: AbsaOSS/k3d-action@v2
-      name: "Create Single Cluster"
       with:
-        cluster-name: "test-cluster-1"
-        args: --agents 1
+        cluster-name: "k3s-default"
+        args: >-
+          --agents 1
+          --no-lb
+          --k3s-arg "--no-deploy=traefik,servicelb,metrics-server@server:*"
     - name: Test
       run: |
         set -ex
