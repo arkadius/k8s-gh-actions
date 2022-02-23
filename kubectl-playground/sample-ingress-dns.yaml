@@ -16,3 +16,4 @@ spec:
                 name: sample-service
                 port:
                   number: 80
+      host: sample.cluster.local
