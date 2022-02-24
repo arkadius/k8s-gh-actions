@@ -1,0 +1,1 @@
+curl http://sample.cluster.local:8088/hello/world

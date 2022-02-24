@@ -22,3 +22,14 @@ spec:
                   fieldPath: metadata.name
           ports:
             - containerPort: 9000
+          startupProbe:
+            tcpSocket:
+              port: 9000
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 20
+          livenessProbe:
+            tcpSocket:
+              port: 9000
+            initialDelaySeconds: 5
+            periodSeconds: 5
